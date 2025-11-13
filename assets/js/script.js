@@ -88,19 +88,68 @@ nbAnneesBissextiles(2011,2020);
 nbAnneesBissextiles(2000,2025);
 nbAnneesBissextiles(2025,2000);
 
+/* Approche de Teodor
+
+let nbBissextiles = (annee1,annee2) =>{
+    
+    if(annee1>annee2){
+        let temp = annee1;
+        annee1 = annee2;
+        annee2 = temp;
+    }
+    //Cas 1: l'année est divisible par 4 mais pas par 100
+    //Cas 2: l'année est divisible par 400
+    let compteur = 0
+    for(let i=annee1;i<=annee2;i++){
+        if((i%4==0 && i%100!=0)||(i%400==0)){
+            compteur++;
+        }
+    }
+    console.log(`Entre ${annee1} et ${annee2} il y a ${compteur} années bissextiles`)
+}
+nbBissextiles(2025,2000);
+nbBissextiles(2000,2025) */
+
 // exercice 6
 
 function nbAleatoires(){
     let tableauNb = [];
 
     for (let index = 0; index<7;index=index+1){
-        tableauNb.push(Math.floor(Math.random()*100));
+        let nombre =Math.floor(Math.random()*10);
+
+        if (tableauNb.includes(nombre)){
+            index = index - 1;
+        }
+         if (!tableauNb.includes(nombre)){
+        tableauNb.push(nombre);}
     }   
     
     console.log(tableauNb)}
 
 nbAleatoires();
 nbAleatoires();
+
+/* approche d'Arthur
+function nombresAleatoires() {
+
+    const nombres = [];
+
+    // Tant que le tableau ne contient pas 7 nombres uniques
+    while (nombres.length < 7) {
+
+        // je vais générer un nombre aléatoire entre 0 et 99
+        let nombre = Math.floor(Math.random() * 100);
+
+        // Vérifier si le nombre n'est pas déjà dans le tableau
+        if (!nombres.includes(nombre)) {
+            nombres.push(nombre); // Ajouter le nombre au tableau
+        }
+    }
+
+    return nombres;
+}
+console.log(nombresAleatoires())*/
 
 // exercice 7
 
@@ -115,6 +164,16 @@ factorielle(2);
 factorielle(0);
 factorielle(6);
 
+/* approche du cours
+function factorielle(nb) {
+    
+    if (nb==1 ||nb==0){
+        return 1
+    }
+
+    return nb*factorielle(nb-1)
+} */
+
 // exercice 8
 
 let getStringLength = string => {
@@ -125,11 +184,13 @@ let getStringLength = string => {
     else {
         stringLength=`La chaîne contient ${string.length} caractères`;
     }
-    return stringLength
+    return stringLength;
 }
 console.log(getStringLength("1"));
 console.log(getStringLength("blabalbla"));
 console.log(getStringLength(""));
+
+//correction : bonne traduction
 
 // exercice 9
 
@@ -137,3 +198,5 @@ function getMassage(name){
     return `Bonjour, ${name} ! Comment vas-tu?`;
 }
 console.log(getMassage('Pierre'));
+
+//correction : bonne traduction
